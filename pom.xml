@@ -33,6 +33,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<dependency>
+      		<groupId>org.springframework</groupId>
+      		<artifactId>spring-web</artifactId>
+      		<version>3.1.2.RELEASE</version>
+		</dependency>
 				
 		<!-- AspectJ -->
 		<dependency>
@@ -124,6 +129,14 @@
       		<artifactId>jetty-server</artifactId>
       		<version>${jettyVersion}</version>
     	</dependency>
+    	
+    	<!-- Jackson -->
+ 		<dependency>
+      		<groupId>org.codehaus.jackson</groupId>
+      		<artifactId>jackson-mapper-asl</artifactId>
+      		<version>1.9.9</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>
