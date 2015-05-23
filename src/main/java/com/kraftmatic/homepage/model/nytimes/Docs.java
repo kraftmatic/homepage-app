@@ -1,8 +1,6 @@
 package com.kraftmatic.homepage.model.nytimes;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Docs {
 
 	private String pub_date;

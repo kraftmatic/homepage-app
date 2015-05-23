@@ -1,11 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%--
+--%><%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %><%--
+--%><%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Nick Kraftor's Homepage</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+	<title>Home</title>
+	<script src="<spring:url value="/resources/scripts/jquery-2.1.4.min.js" />"></script> 
+	<script src="<spring:url value="/resources/scripts/bootstrap.min.js" />"></script>
+	<link rel="stylesheet" href="<spring:url value="/resources/styles/bootstrap.min.css" />"/>
 </head>
+
 <body>
 <h1>
 	Hello ${userName}!  
@@ -14,9 +18,15 @@
 
 <!--  Article Display -->
 
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+</div>
+
 <c:if test="${not empty nytArticles}">
 
-	<table>
+	<table class="table">
 	
 		<thead>
 			<tr>
@@ -38,7 +48,5 @@
 	</table>
 
 </c:if>
-
-
 </body>
 </html>
