@@ -2,7 +2,9 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Nick Kraftor's Homepage</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <body>
 <h1>
