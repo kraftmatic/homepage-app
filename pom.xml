@@ -9,17 +9,18 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<spring.version>4.1.6.RELEASE</spring.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<jettyVersion>9.0.2.v20130417</jettyVersion>
+		<jacksonVersion>2.3.0</jacksonVersion>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${spring.version}</version>
 			<exclusions>
 				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
@@ -31,12 +32,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
       		<groupId>org.springframework</groupId>
       		<artifactId>spring-web</artifactId>
-      		<version>3.1.2.RELEASE</version>
+      		<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>${spring.version}</version>
 		</dependency>
 				
 		<!-- AspectJ -->
@@ -131,10 +137,42 @@
     	</dependency>
     	
     	<!-- Jackson -->
+    	<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>${jacksonVersion}</version>
+  		</dependency>
  		<dependency>
-      		<groupId>org.codehaus.jackson</groupId>
-      		<artifactId>jackson-mapper-asl</artifactId>
-      		<version>1.9.9</version>
+    		<!-- Note: core-annotations version x.y.0 is generally compatible with
+         		(identical to) version x.y.1, x.y.2, etc. -->
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-annotations</artifactId>
+    		<version>${jacksonVersion}</version>
+  		</dependency>
+  		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-core</artifactId>
+    		<version>${jacksonVersion}</version>
+  		</dependency>
+		
+		<!-- Bootstrap/jQuery -->
+		
+		<dependency>
+    		<groupId>org.webjars</groupId>
+    		<artifactId>bootstrap</artifactId>
+    		<version>3.2.0</version>
+    		<exclusions>
+        		<exclusion>
+            		<groupId>org.webjars</groupId>
+            		<artifactId>jquery</artifactId>
+        		</exclusion>
+    		</exclusions>
+		</dependency>
+ 
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>2.1.1</version>
 		</dependency>
 		
 	</dependencies>

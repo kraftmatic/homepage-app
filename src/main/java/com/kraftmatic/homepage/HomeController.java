@@ -9,7 +9,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,7 +49,7 @@ public class HomeController {
 		String timesApi = "http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=android&sort=newest&api-key=54998d0970a4e8ca37483968d1206549:8:72125525";
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
-		messageConverters.add(new MappingJacksonHttpMessageConverter());
+		messageConverters.add(new MappingJackson2HttpMessageConverter());
 		restTemplate.setMessageConverters(messageConverters);
 		ServiceResponse response = restTemplate.getForObject(timesApi,
 				ServiceResponse.class);
