@@ -37,10 +37,10 @@
 		</thead>
 		
 		<tbody>
-		<c:forEach var="article" items="${nytArticles.docs}">
+		<c:forEach var="article" items="${nytArticles}">
 			<tr>
-				<td>${article.pub_date}</td>
-				<td><a href="${article.web_url}">${article.headline.main}</a></td>
+				<td>${article.date}</td>
+				<td><a href="${article.url}">${article.title}</a></td>
 				<td>${article.snippet}<td>
 			<tr>
 		</c:forEach>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.kraftmatic.homepage.model.nytimes.ServiceResponse;
+import com.kraftmatic.homepage.times.TimesTransformer;
 
 @Controller
 public class HomeController {
@@ -53,6 +54,7 @@ public class HomeController {
 		restTemplate.setMessageConverters(messageConverters);
 		ServiceResponse response = restTemplate.getForObject(timesApi,
 				ServiceResponse.class);
+		List<Article> articles = TimesTransformer.generateArticles(response);
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
@@ -60,7 +62,7 @@ public class HomeController {
 
 		String formattedDate = dateFormat.format(date);
 
-		model.addAttribute("nytArticles", response.getResponse());
+		model.addAttribute("nytArticles", articles);
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("userName", name);
 
