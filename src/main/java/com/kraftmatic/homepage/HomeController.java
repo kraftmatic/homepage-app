@@ -46,7 +46,7 @@ public class HomeController {
 			@PathVariable("name") String name) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		String timesApi = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=android&facet_field=source&api-key=54998d0970a4e8ca37483968d1206549:8:72125525";
+		String timesApi = "http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=android&sort=newest&api-key=54998d0970a4e8ca37483968d1206549:8:72125525";
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
 		messageConverters.add(new MappingJacksonHttpMessageConverter());
@@ -60,6 +60,7 @@ public class HomeController {
 
 		String formattedDate = dateFormat.format(date);
 
+		model.addAttribute("nytArticles", response.getResponse());
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("userName", name);
 
