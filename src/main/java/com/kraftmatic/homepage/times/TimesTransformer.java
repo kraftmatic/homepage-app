@@ -14,7 +14,7 @@ public class TimesTransformer {
 
 		for (Docs doc : response.getResponse().getDocs()) {
 			Article article = new Article();
-			article.setDate(doc.getPub_date());
+			article.setDate(doc.getPub_date().substring(0, 10));
 			article.setTitle(doc.getHeadline().getMain());
 			article.setSnippet(doc.getSnippet());
 			article.setUrl(doc.getWeb_url());
