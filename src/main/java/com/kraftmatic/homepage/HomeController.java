@@ -1,6 +1,7 @@
 package com.kraftmatic.homepage;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.kraftmatic.homepage.model.nytimes.ServiceResponse;
+import com.kraftmatic.homepage.times.TimesQuery;
 import com.kraftmatic.homepage.times.TimesTransformer;
 
 @Controller
@@ -34,11 +36,13 @@ public class HomeController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
 				DateFormat.LONG, locale);
+		SimpleDateFormat thisYearFormat = new SimpleDateFormat("yyyy");
 
 		String formattedDate = dateFormat.format(date);
+		String thisYear = thisYearFormat.format(date);
 
+		model.addAttribute("thisYear", thisYear);
 		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("userName", "world");
 
 		return "home";
 	}
@@ -48,27 +52,9 @@ public class HomeController {
 			@RequestParam String startdate, @RequestParam String enddate) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		StringBuilder apiString = new StringBuilder();
-		apiString
-				.append("http://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-						+ query);
-		if (!StringUtils.isEmpty(startdate)) {
-			apiString.append("&begin_date=" + processDate(startdate));
-		}
-		if (!StringUtils.isEmpty(enddate)) {
-			apiString.append("&end_date=" + processDate(enddate));
-		}
-		apiString
-				.append("&sort=newest&api-key=54998d0970a4e8ca37483968d1206549:8:72125525");
-		String timesApi = apiString.toString();
-
-		RestTemplate restTemplate = new RestTemplate();
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
-		messageConverters.add(new MappingJackson2HttpMessageConverter());
-		restTemplate.setMessageConverters(messageConverters);
-		ServiceResponse response = restTemplate.getForObject(timesApi,
-				ServiceResponse.class);
-		List<Article> articles = TimesTransformer.generateArticles(response);
+		TimesQuery queryParams = new TimesQuery(query, startdate, enddate);
+		String timesApi = buildApiQuery(queryParams);
+		List<Article> articles = fetchArticles(timesApi);
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
@@ -81,6 +67,36 @@ public class HomeController {
 		model.addAttribute("userName", query);
 
 		return "home";
+	}
+
+	private List<Article> fetchArticles(String timesApi) {
+		RestTemplate restTemplate = new RestTemplate();
+		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
+		messageConverters.add(new MappingJackson2HttpMessageConverter());
+		restTemplate.setMessageConverters(messageConverters);
+		ServiceResponse response = restTemplate.getForObject(timesApi,
+				ServiceResponse.class);
+		List<Article> articles = TimesTransformer.generateArticles(response);
+		return articles;
+	}
+
+	private String buildApiQuery(TimesQuery queryParams) {
+		StringBuilder apiString = new StringBuilder();
+		apiString
+				.append("http://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
+						+ queryParams.getSearchTerm());
+		if (!StringUtils.isEmpty(queryParams.getBeginDate())) {
+			apiString.append("&begin_date="
+					+ processDate(queryParams.getBeginDate()));
+		}
+		if (!StringUtils.isEmpty(queryParams.getEndDate())) {
+			apiString.append("&end_date="
+					+ processDate(queryParams.getEndDate()));
+		}
+		apiString
+				.append("&sort=newest&api-key=54998d0970a4e8ca37483968d1206549:8:72125525");
+		String timesApi = apiString.toString();
+		return timesApi;
 	}
 
 	public String processDate(String startdate) {

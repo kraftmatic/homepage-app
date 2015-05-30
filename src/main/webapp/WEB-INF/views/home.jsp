@@ -10,6 +10,7 @@
 	<script src="<spring:url value="/resources/scripts/bootstrap.min.js" />"></script>
 	<link rel="stylesheet" href="<spring:url value="/resources/styles/jquery-ui.min.css" />"/>
 	<link rel="stylesheet" href="<spring:url value="/resources/styles/bootstrap.min.css" />"/>
+	<link rel="stylesheet" href="<spring:url value="/resources/styles/mainpage.css" />"/>
 	<script>
 	  $(function() {
 	    $( "#datepickerstart" ).datepicker({ maxDate: '0'});
@@ -50,13 +51,17 @@
 	</h3>
 
 	<c:forEach var="article" items="${nytArticles}">
-		<div class="bg-info" style="padding: 7px; border: 1px steelblue solid; border-radius: 5px;"><a href="${article.url}">${article.title}</a>
+		<div class="bg-info article-header"><a href="${article.url}">${article.title}</a>
 		<div class="pull-right">${article.date}</div></div>
 		<pre>${article.snippet}</pre>
 
 	</c:forEach>
 
 </c:if>
-</div>
+	<div class="disclaimer-text">
+		<div class="copyright-text">© HandKraftedSoftware.com ${thisYear}
+			All Rights Reserved</div>
+		No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</div>
+	</div>
 </body>
 </html>
