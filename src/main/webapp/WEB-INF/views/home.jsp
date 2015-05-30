@@ -22,8 +22,13 @@
 </head>
 
 <body style="background-color: aliceblue">
-<div class="container" style="width:730;background-color: white;border-left: 1px black solid;border-right: 1px black solid;border-bottom: 1px black solid;">
-<P>  The time on the server is ${serverTime}. </P>
+<div class="container main-container" style="">
+
+<div style="margin: 10;">
+<a href="http://kraftvgs.ignorelist.com/homepage/">
+<img src="http://upload.wikimedia.org/wikipedia/commons/4/44/Just_software_logo_blauer_kreis_auf_transparentem_hintergrund_(2000x638px).png" height="100" width="300"/>
+</a>
+</div>
 
 <form class="form-inline" action="/homepage/home">
 
@@ -31,6 +36,7 @@
   <option>Android</option>
   <option>Astronomy</option>
   <option>Guitar</option>
+  <option>Tottenham</option>
 </select>
 <div class="form-group">
     <label class="sr-only" for="datepickerstart">Start date</label>
