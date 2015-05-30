@@ -22,7 +22,7 @@
 </head>
 
 <body style="background-color: aliceblue">
-<div class="container main-container" style="">
+<div class="container main-container">
 
 <div style="margin: 10;">
 <a href="http://kraftvgs.ignorelist.com/homepage/">
@@ -67,7 +67,17 @@
 	<div class="disclaimer-text">
 		<div class="copyright-text">© HandKraftedSoftware.com ${thisYear}
 			All Rights Reserved</div>
-		No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.</div>
+		No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 	</div>
+	<hr />
+	<div style="text-align: center;">
+		Powered by<br />
+		<img src="<spring:url value="/resources/styles/images/java_logo.png" />" width="140" class="center">
+		<img src="<spring:url value="/resources/styles/images/spring_logo.png" />" width="120" class="center">
+		<img src="<spring:url value="/resources/styles/images/jquery_logo.png" />" width="120" class="center">
+		<img src="<spring:url value="/resources/styles/images/nyt_logo.png" />" width="120" height="70" class="center">
+	</div>
+
+</div>
 </body>
 </html>
