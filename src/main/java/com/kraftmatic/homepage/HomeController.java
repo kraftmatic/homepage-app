@@ -1,6 +1,5 @@
 package com.kraftmatic.homepage;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,18 +32,17 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-		SimpleDateFormat thisYearFormat = new SimpleDateFormat("yyyy");
+		generateYear(model);
 
-		String formattedDate = dateFormat.format(date);
+		return "home";
+	}
+
+	private void generateYear(Model model) {
+		Date date = new Date();
+		SimpleDateFormat thisYearFormat = new SimpleDateFormat("yyyy");
 		String thisYear = thisYearFormat.format(date);
 
 		model.addAttribute("thisYear", thisYear);
-		model.addAttribute("serverTime", formattedDate);
-
-		return "home";
 	}
 
 	@RequestMapping(value = "/home")
@@ -56,14 +54,9 @@ public class HomeController {
 		String timesApi = buildApiQuery(queryParams);
 		List<Article> articles = fetchArticles(timesApi);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
+		generateYear(model);
 
 		model.addAttribute("nytArticles", articles);
-		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("userName", query);
 
 		return "home";
