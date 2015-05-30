@@ -7,6 +7,12 @@
 	margin-top: 5px;
 }
 
+.form-input{
+	padding: 10px;
+	background-color: aliceblue;
+	border: 1px black solid;
+}
+
 .disclaimer-text{
 	color: grey;
 	font-size: smaller;
@@ -23,10 +29,29 @@
 .article-header{
 	padding: 7px; 
 	border: 1px steelblue solid; 
-	border-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 img.center {
   margin-left: auto;
   margin-right: auto;
+}
+
+.description {
+	margin: 20px;
+	color: grey;
+	font-size: small;
+}
+.article{
+	padding: 8px;
+    background-color: whitesmoke;
+    border-left: 1px gray solid;
+    border-right: 1px gray solid;
+    border-bottom: 1px gray solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }

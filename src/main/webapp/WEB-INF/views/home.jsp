@@ -22,33 +22,37 @@
 </head>
 
 <body style="background-color: aliceblue">
-<div class="container main-container">
+	<div class="container main-container">
 
-<div style="margin: 10;">
-<a href="http://kraftvgs.ignorelist.com/homepage/">
+	<div style="margin: 10;">
+		<a href="http://kraftvgs.ignorelist.com/homepage/">
+		<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
+		</a>
+	</div>
+	<hr />
+	
+	<c:if test="${empty nytArticles}">
+	<div class="description">This page is an ongoing example development playground to help both hone my skills involving certain tech stacks as well as showcase some of my web development skills.  This page is a Java/Spring-driven article search engine (hosted on a Raspberry Pi) that uses the New York Times RESTful API to query a few select search terms I find interesting.  The source code for this site can be found at <a href="http://www.github.com/kraftmatic">my github page</a>.</div>
+	</c:if>
+	
+	<form class="form-inline form-input" action="/homepage/home">
 
-<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
-</a>
-</div>
-<hr />
-<form class="form-inline" action="/homepage/home">
-
-<select class="form-control" name="query">
-  <option>Android</option>
-  <option>Astronomy</option>
-  <option>Guitar</option>
-  <option>Tottenham</option>
-</select>
-<div class="form-group">
-    <label class="sr-only" for="datepickerstart">Start date</label>
-    <input type="text" class="form-control" id="datepickerstart" placeholder="Start date" name="startdate">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="datepickerend">End date</label>
-    <input type="text" class="form-control" id="datepickerend" placeholder="End date" name="enddate">
-  </div>
-	<button type="submit" class="btn btn-primary pull-right">Search</button>
-</form>
+		<select class="form-control" name="query">
+		  <option>Android</option>
+		  <option>Astronomy</option>
+		  <option>Guitar</option>
+		  <option>Tottenham</option>
+		</select>
+		<div class="form-group">
+    		<label class="sr-only" for="datepickerstart">Start date</label>
+    		<input type="text" class="form-control" id="datepickerstart" placeholder="Start date" name="startdate">
+  		</div>
+  		<div class="form-group">
+    		<label class="sr-only" for="datepickerend">End date</label>
+    		<input type="text" class="form-control" id="datepickerend" placeholder="End date" name="enddate">
+  		</div>
+		<button type="submit" class="btn btn-primary pull-right">Search</button>
+	</form>
 
 
 <c:if test="${not empty nytArticles}">
@@ -60,7 +64,7 @@
 	<c:forEach var="article" items="${nytArticles}">
 		<div class="bg-info article-header"><a href="${article.url}">${article.title}</a>
 		<div class="pull-right">${article.date}</div></div>
-		<pre>${article.snippet}</pre>
+		<div class="article">${article.snippet}</div>
 
 	</c:forEach>
 
@@ -77,6 +81,8 @@
 		<img src="<spring:url value="/resources/styles/images/spring_logo.png" />" width="120" class="center">
 		<img src="<spring:url value="/resources/styles/images/jquery_logo.png" />" width="120" class="center">
 		<img src="<spring:url value="/resources/styles/images/nyt_logo.png" />" width="120" height="70" class="center">
+		<img src="<spring:url value="/resources/styles/images/pi_logo.png" />" width="120" height="70" class="center">
+
 	</div>
 
 </div>
