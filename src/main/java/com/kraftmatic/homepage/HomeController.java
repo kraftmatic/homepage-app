@@ -1,6 +1,7 @@
 package com.kraftmatic.homepage;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,11 +36,13 @@ public class HomeController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
 				DateFormat.LONG, locale);
+		SimpleDateFormat thisYearFormat = new SimpleDateFormat("yyyy");
 
 		String formattedDate = dateFormat.format(date);
+		String thisYear = thisYearFormat.format(date);
 
+		model.addAttribute("thisYear", thisYear);
 		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("userName", "world");
 
 		return "home";
 	}
