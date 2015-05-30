@@ -26,10 +26,11 @@
 
 <div style="margin: 10;">
 <a href="http://kraftvgs.ignorelist.com/homepage/">
-<img src="http://upload.wikimedia.org/wikipedia/commons/4/44/Just_software_logo_blauer_kreis_auf_transparentem_hintergrund_(2000x638px).png" height="100" width="300"/>
+
+<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
 </a>
 </div>
-
+<hr />
 <form class="form-inline" action="/homepage/home">
 
 <select class="form-control" name="query">
