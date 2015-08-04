@@ -50,9 +50,11 @@ public class HomeController {
 			@RequestParam String startdate, @RequestParam String enddate) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
+		// read articles and save them as object
+
 		TimesQuery queryParams = new TimesQuery(query, startdate, enddate);
-		String timesApi = buildApiQuery(queryParams);
-		List<Article> articles = fetchArticles(timesApi);
+		String timesApiEndpoint = buildApiQuery(queryParams);
+		List<Article> articles = fetchArticles(timesApiEndpoint);
 
 		generateYear(model);
 
@@ -62,12 +64,12 @@ public class HomeController {
 		return "home";
 	}
 
-	private List<Article> fetchArticles(String timesApi) {
+	private List<Article> fetchArticles(String timesApiEndpoint) {
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
 		messageConverters.add(new MappingJackson2HttpMessageConverter());
 		restTemplate.setMessageConverters(messageConverters);
-		ServiceResponse response = restTemplate.getForObject(timesApi,
+		ServiceResponse response = restTemplate.getForObject(timesApiEndpoint,
 				ServiceResponse.class);
 		List<Article> articles = TimesTransformer.generateArticles(response);
 		return articles;
@@ -83,13 +85,12 @@ public class HomeController {
 					+ processDate(queryParams.getBeginDate()));
 		}
 		if (!StringUtils.isEmpty(queryParams.getEndDate())) {
-			apiString.append("&end_date="
+			apiString.append("&begin_date="
 					+ processDate(queryParams.getEndDate()));
 		}
 		apiString
 				.append("&sort=newest&api-key=54998d0970a4e8ca37483968d1206549:8:72125525");
-		String timesApi = apiString.toString();
-		return timesApi;
+		return apiString.toString();
 	}
 
 	public String processDate(String startdate) {
