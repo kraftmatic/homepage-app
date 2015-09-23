@@ -25,7 +25,7 @@
 	<div class="container main-container">
 
 	<div style="margin: 10;">
-		<a href="http://kraftvgs.ignorelist.com/homepage/">
+		<a href="http://www.handkraftedsoftware.com/s">
 		<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
 		</a>
 	</div>
@@ -35,7 +35,7 @@
 	<div class="description">This website is an ongoing example development playground to help both hone my skills involving certain tech stacks as well as showcase some of my web development skills.  This page is a Java/Spring-driven article search engine (hosted on a Raspberry Pi) that uses the New York Times RESTful API to query a few select search terms I find interesting.  The source code for this site can be found at <a href="http://www.github.com/kraftmatic">my github page</a>.</div>
 	</c:if>
 	
-	<form class="form-inline form-input" action="/homepage/home">
+	<form class="form-inline form-input" action="/home">
 
 		<select class="form-control" name="query">
 		  <option>Android</option>
