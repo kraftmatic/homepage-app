@@ -55,3 +55,21 @@ img.center {
     margin-bottom: 10px;
     margin-left: 20px;
 }
+
+.linkBar {
+	border-bottom: 1px solid lightgrey;
+    border-top: 1px solid lightgrey;
+    padding: 5px;
+    text-align: center;
+}
+
+.link {
+	padding-right: 7px;
+    padding-left: 10px;
+    font-variant: small-caps;
+    font-size: initial;
+}
+
+.linkRight {
+	border-left: solid 1px lightgrey;
+}

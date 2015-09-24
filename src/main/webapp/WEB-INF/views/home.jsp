@@ -29,10 +29,17 @@
 		<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
 		</a>
 	</div>
-	<hr />
+	
+	<div class="linkBar">
+		<span class="link"><a href="http://www.github.com/kraftmatic" target="_blank">github</a></span>
+		<span class="link linkRight"><a href="http://www.linkedin.com/kraftmatic" target="_blank">linkedin</a></span>
+		<span class="link linkRight"><a href="https://plus.google.com/+NickKraftor/postsface" target="_blank">google+</a></span>
+		<span class="link linkRight"><a href="https://www.facebook.com/kraftvgs" target="_blank">facebook</a></span>
+		<span class="link linkRight"><a href="https://drive.google.com/file/d/0B4T5-6UOu42BVEJJVjEtczB4Zzg/view?usp=sharing" target="_blank" title="This résumé was last updated in September 2015. For a more recent resume please contact me by email at nicholas.kraftor@gmail.com">résumé</a></span>
+	</div>
 	
 	<c:if test="${empty nytArticles}">
-	<div class="description">This website is an ongoing example development playground to help both hone my skills involving certain tech stacks as well as showcase some of my web development skills.  This page is a Java/Spring-driven article search engine (hosted on a Raspberry Pi) that uses the New York Times RESTful API to query a few select search terms I find interesting.  The source code for this site can be found at <a href="http://www.github.com/kraftmatic">my github page</a>.</div>
+	<div class="description">This website is an ongoing example development playground to help both hone my skills involving certain tech stacks as well as showcase some of my web development skills.  This page is a Java/Spring-driven article search engine (hosted on <a href="http://www.heroku.com">Heroku</a>) that uses the New York Times RESTful API to query a few select search terms I find interesting.</div>
 	</c:if>
 	
 	<form class="form-inline form-input" action="/home">
