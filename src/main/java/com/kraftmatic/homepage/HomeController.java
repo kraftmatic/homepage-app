@@ -27,7 +27,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 
 		generateYear(model);
 
@@ -45,7 +44,6 @@ public class HomeController {
 	@RequestMapping(value = "/home")
 	public String home(Locale locale, Model model, @RequestParam String query,
 			@RequestParam String startdate, @RequestParam String enddate) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 
 		List<Article> articles = articleService.getArticles(query, startdate,
 				enddate);
