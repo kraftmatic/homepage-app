@@ -32,10 +32,10 @@
 	
 	<div class="linkBar">
 		<span class="link"><a href="http://www.github.com/kraftmatic" target="_blank">github</a></span>
-		<span class="link linkRight"><a href="https://www.linkedin.com/in/nkraftor" target="_blank">linkedin</a></span>
+		<span class="link linkRight"><a href="http://www.linkedin.com/kraftmatic" target="_blank">linkedin</a></span>
 		<span class="link linkRight"><a href="https://plus.google.com/+NickKraftor/postsface" target="_blank">google+</a></span>
 		<span class="link linkRight"><a href="https://www.facebook.com/kraftvgs" target="_blank">facebook</a></span>
-		<span class="link linkRight"><a href="https://drive.google.com/file/d/0B4T5-6UOu42BVEJJVjEtczB4Zzg/view?usp=sharing" target="_blank" title="This résumé was last updated in September 2015. For a more recent resume please contact me by email at nicholas.kraftor@gmail.com">résumé</a></span>
+		<span class="link linkRight"><a href="https://drive.google.com/file/d/0B4T5-6UOu42BVEJJVjEtczB4Zzg/view?usp=sharing" target="_blank" title="This re&#769;sume&#769; was last updated in September 2015. For a more recent resume please contact me by email at nicholas.kraftor@gmail.com">re&#769;sume&#769;</a></span>
 	</div>
 	
 	<c:if test="${empty nytArticles}">
@@ -77,7 +77,7 @@
 
 </c:if>
 	<div class="disclaimer-text">
-		<div class="copyright-text">© HandKraftedSoftware.com ${thisYear}
+		<div class="copyright-text">� HandKraftedSoftware.com ${thisYear}
 			All Rights Reserved</div>
 		No part of this website or any of its contents may be reproduced, copied, modified or adapted, without the prior written consent of the author, unless otherwise indicated for stand-alone materials.
 	</div>
