@@ -25,7 +25,7 @@
 	<div class="container main-container">
 
 	<div style="margin: 10;">
-		<a href="http://www.handkraftedsoftware.com/s">
+		<a href="http://www.handkraftedsoftware.com/">
 		<img src="<spring:url value="/resources/styles/images/hksoft_logo.png" />" width="400"/>
 		</a>
 	</div>
